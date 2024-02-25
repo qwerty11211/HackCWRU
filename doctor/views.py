@@ -2,15 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Doctor
 from .forms import DoctorForm
 from user.models import  Appointments
-from pangea.config import PangeaConfig
-from pangea.services import Redact, Audit
 import os
 import openai
 import datetime
-import speech_recognition as sr
 
-config = PangeaConfig(domain=os.getenv("PANGEA_DOMAIN"))  
-audit = Audit(os.getenv("PANGEA_AUDIT_TOKEN"), config=config) 
 
 def user_exist(credential):
     username = credential.cleaned_data.get("username")
@@ -34,7 +29,7 @@ def valid_username(credential):
 def login_page(request):
     
     if request.method == 'POST':
-        audit.log(f"Made a POST request to doctor login page")
+      
         form = DoctorForm(request.POST)
         if form.is_valid():
             if user_exist(form):
@@ -42,7 +37,7 @@ def login_page(request):
                 return redirect('/doctor/1')
     else:
         form = DoctorForm()
-        audit.log(f"Made a GET request to doctor login page")
+   
     context = {
         'form': form
     }
@@ -58,7 +53,7 @@ def register_page(request):
             return redirect('/doctor/login')
     else:
         form = DoctorForm()
-        audit.log(f"Made a GET request to doctor register page")
+      
     context = {
         'form': form
     }
@@ -67,7 +62,7 @@ def register_page(request):
 
 def dashboard(request):
     doctor_id=request.user.id
-    audit.log(f"{request.user} has accessed the doctor landing page")
+    
     doctor_details = Doctor.objects.get(id=doctor_id)
     appointments = Appointments.objects.filter(doctorid=doctor_id).order_by('datetime')
     context = {
@@ -81,7 +76,6 @@ def dashboard(request):
 
 def doctor_details(request, doctor_id):
     doctor_details = Doctor.objects.get(id=doctor_id)
-    audit.log(f"Displaying the doctor info of {doctor_details}")
     context = {
         'doctor': doctor_details,
     }
@@ -134,11 +128,6 @@ def add_prescription(request, doctor_id):
         print("listening")
         audio = r.listen(source)
     text = r.recognize_google(audio)
-    config = PangeaConfig(domain=os.getenv("PANGEA_DOMAIN"))  
-    redact = Redact(os.getenv("PANGEA_TOKEN"), config=config) 
-    response = redact.redact(
-        text=text
-        )
     redacted_text=response.result.redacted_text
 
     diseases=make_openapi_call(f"List as points without explanation the top 2 names of disease that is likely given the following   : {', '.join(redacted_text)}")
