@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %}
+
+<h2>Your Form</h2>
+
+<h2>Medical Details</h2>
+
+<table>
+   <tr>
+      <th>Field</th>
+      <th>Value</th>
+   </tr>
+   <tr>
+      <td>User</td>
+      <td>{{ medicalDetails.user }}</td>
+   </tr>
+   <tr>
+      <td>Ongoing Medication</td>
+      <td>{{ medicalDetails.onGoingMedication }}</td>
+   </tr>
+   <tr>
+      <td>Chronic Disease</td>
+      <td>{{ medicalDetails.chronicDisease }}</td>
+   </tr>
+   <tr>
+      <td>Known Allergies</td>
+      <td>{{ medicalDetails.knownAllergies }}</td>
+   </tr>
+   <tr>
+      <td>Family History</td>
+      <td>{{ medicalDetails.familyHistory }}</td>
+   </tr>
+   <tr>
+      <td>Blood Group</td>
+      <td>{{ medicalDetails.bloodGroup }}</td>
+   </tr>
+</table>
+{% endblock %}

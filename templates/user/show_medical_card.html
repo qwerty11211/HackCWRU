@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %} <br /><br />
+
+<div class="medical_card">
+   <div class="medical_card__info">
+      <div class="medical_card__logo">Elizabeth Tom</div>
+      <div class="row">
+         <div class="col-md-4">
+            <img
+               src="data:image/png;base64,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"
+               width="150"
+               heigh="150"
+               alt=""
+            />
+         </div>
+         <div class="col-md-1"></div>
+         <div class="col-md-6">
+            <div class="medical_card__number">
+               <div class="medical_card__type">Health ID:</div>
+               <span class="medical_card__digit-group"># 4100 2132 1211</span>
+            </div>
+         </div>
+      </div>
+
+      <div class="medical_card__exp-date"><time datetime="2038-01">01/38</time></div>
+      <div class="medical_card__name" aria-label="Dee Stroyer">
+         Issued by <br />
+         Nexa healthcare
+      </div>
+      <div class="medical_card__vendor" role="img" aria-labelledby="medical_card-vendor">
+         <span id="medical_card-vendor" class="medical_card__vendor-sr">Mastermedical_card</span>
+      </div>
+   </div>
+   <div class="medical_card__texture"></div>
+</div>
+{% endblock %}

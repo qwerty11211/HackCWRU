@@ -1,0 +1,149 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %}
+
+<main>
+   <br />
+   <br />
+   <article class="container article">
+      <section class="home">
+         <div class="card profile-card">
+            <div class="profile-card-wrapper">
+               <figure class="card-avatar">
+                  <img src="https://plus.unsplash.com/premium_photo-1661766718556-13c2efac1388?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Elizabeth Foster" width="110" height="100" />
+               </figure>
+
+               <div>
+                  <p class="card-title">Lillian mathew</p>
+
+                  <p class="card-subtitle">Dental</p>
+               </div>
+            </div>
+
+            <ul class="contact-list">
+               <li>
+                  <a href="mailto:xyz@mail.com" class="contact-link icon-box">
+                     <span class="material-symbols-rounded icon">mail</span>
+
+                     <p class="text">lillianmathew@mail.com</p>
+                  </a>
+               </li>
+            </ul>
+
+            <img src="https://cdn.dribbble.com/users/508543/screenshots/7122590/media/7b5c4f53467d3f586a06ec39f821b084.gif" alt="" />
+         </div>
+
+         <div class="card revenue-card">
+            <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+               <span class="material-symbols-rounded icon">more_horiz</span>
+            </button>
+
+            <ul class="ctx-menu">
+               <li class="ctx-item">
+                  <button class="ctx-menu-btn icon-box">
+                     <span class="material-symbols-rounded icon" aria-hidden="true">edit</span>
+
+                     <span class="ctx-menu-text">Edit</span>
+                  </button>
+               </li>
+
+               <li class="ctx-item">
+                  <button class="ctx-menu-btn icon-box">
+                     <span class="material-symbols-rounded icon" aria-hidden="true">cached</span>
+
+                     <span class="ctx-menu-text">Refresh</span>
+                  </button>
+               </li>
+            </ul>
+
+            <div class="row">
+               <div class="col-md-3">
+                  <p class="card-title">Revenue</p>
+                  <data class="card-price" value="2100">$2,100</data>
+               </div>
+
+               <div class="col-md-3">
+                  <p class="card-title">New appointment</p>
+                  <data class="card-price" value="2100">80</data>
+               </div>
+               <div class="col-md-3">
+                  <p class="card-title">Patients</p>
+                  <data class="card-price" value="2100">140+</data>
+               </div>
+               <div class="col-md-3">
+                  <p class="card-title">Surgeries</p>
+                  <data class="card-price" value="2100">160+</data>
+               </div>
+            </div>
+            <p class="card-text">Last Week</p>
+
+            <div class="divider card-divider"></div>
+
+            <ul class="revenue-list">
+               <li class="revenue-item icon-box">
+                  <span class="material-symbols-rounded icon green">trending_up</span>
+
+                  <div>
+                     <data class="revenue-item-data" value="15">15%</data>
+
+                     <p class="revenue-item-text">Prev Week</p>
+                  </div>
+               </li>
+
+               <li class="revenue-item icon-box">
+                  <span class="material-symbols-rounded icon red">trending_down</span>
+
+                  <div>
+                     <data class="revenue-item-data" value="10">10%</data>
+
+                     <p class="revenue-item-text">Prev Month</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </section>
+
+      <section class="tasks">
+         <div class="section-title-wrapper">
+            <h2 class="section-title">Upcoming appointments</h2>
+
+            <button class="btn btn-link icon-box">
+               <span>View All</span>
+
+               <span class="material-symbols-rounded icon" aria-hidden="true">arrow_forward</span>
+            </button>
+         </div>
+
+         <ul class="tasks-list">
+            {% for appointment in appointments %}
+            <li class="tasks-item">
+               <div class="card task-card">
+                  <div class="card-input">
+                     <input type="checkbox" name="task-1" id="task-1" />
+
+                     <label for="task-1" class="task-label">
+                        <a href="">{{appointment.patientname}} </a>
+                     </label>
+                  </div>
+
+                  <div class="card-badge cyan radius-pill"><span class="d-block text-info"></span> {{appointment.datetime}}</div>
+
+                  <ul class="card-meta-list">
+                     <li>
+                        <a href="{% url 'add_prescription' doctor.id %}">
+                           <button class="sm btn btn-info" style="font-size: 10px">Start analyzes</button>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </li>
+            {% endfor %}
+         </ul>
+
+         <button class="btn btn-primary" data-load-more>
+            <span class="spiner"></span>
+
+            <span>Load More</span>
+         </button>
+      </section>
+   </article>
+</main>
+{% endblock %}

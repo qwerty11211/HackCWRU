@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %} <br /><br /><br />
+
+<div class="forms">
+   <div class="row">
+      <div class="col-7">
+         <form method="post" class="custom-form" enctype="multipart/form-data">
+            <h2>Your Form</h2>
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="submit-button">Submit</button>
+         </form>
+      </div>
+      <div class="col-5">
+         <br /><br /><br />
+         <img width="500" height="500" src="https://cdnl.iconscout.com/lottie/premium/thumb/woman-using-mobile-healthcare-service-5685900-4745611.gif" alt="" />
+      </div>
+   </div>
+</div>
+
+{% endblock %}

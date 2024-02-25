@@ -1,0 +1,191 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+   <div class="container-fluid">
+      <div class="row align-items-center">
+         <div class="col-md-12 col-12">
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Prescription</li>
+               </ol>
+            </nav>
+            <h2 class="breadcrumb-title">Prescription</h2>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- /Breadcrumb -->
+
+<!-- Page Content -->
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <!-- Profile Widget -->
+            <div class="card widget-profile pat-widget-profile">
+               <div class="card-body">
+                  <div class="pro-widget-content">
+                     <div class="profile-info-widget">
+                        <a href="#" class="booking-doc-img">
+                           <img src="{{ doctor.photo.url }}" alt="User Image" />
+                        </a>
+                        <div class="profile-det-info">
+                           <h3><a href="patient-profile.html">{{ doctor.name }}</a></h3>
+                           <div class="patient-details">
+                              <h5><b>Patient ID :</b> PT0016</h5>
+                              <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{ doctor.location }}</h5>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <br />
+
+                  <button class="btn bg-primary-light text-center"><i class="fas fa-brain"></i> Start analysis</button>
+                  <div class="patient-info">
+                     <h5>Symptoms</h5>
+                     <div>
+                        <ul class="typing-text" >
+                           <li >trouble breathing</li>
+                           <li >chest feels tight</li>
+                           <li >wheezing</li>
+                           <li >cough</li>
+                        </ul>
+                     </div>
+
+                     <br />
+                     <hr />
+                        <h6>Possible disease</h6>
+                     <ul>
+                        <li class="typing-text">Asthma</li>
+                     </ul> 
+                     <h6>Recommended remedy</h6>
+                     <ul>
+                        <li class="typing-text">Dextromethorphan</li>
+                     </ul> 
+                  </div>
+                  </div>
+               </div>
+               <!-- /Profile Widget -->
+            </div>
+
+            <div class="col-md-7 col-lg-8 col-xl-9">
+               <div class="card">
+                  <div class="card-body">
+                     <div class="row">
+                        <div class="col-sm-6">
+                           <div class="">
+                              <h4 class="card-title mb-0"><h4 class="d-block">13 November 2023</h4></h4>
+                              <span class="d-block text-muted">#INV0001</span>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 text-sm-right">
+                           <div class="billing-info"></div>
+                        </div>
+                     </div>
+
+                     <!-- Add Item -->
+                     <div class="add-more-item text-right">
+                        <a href="#"><i class="fa fa-plus-circle"></i> Add More</a>
+                     </div>
+                     <!-- /Add Item -->
+
+                     <!-- Prescription Item -->
+                     <div class="card card-table">
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table class="table table-hover table-center">
+                                 <thead>
+                                    <tr>
+                                       <th style="width: 200px">Name</th>
+                                       <th style="width: 100px">Quantity</th>
+                                       <th style="width: 100px">Days</th>
+                                       <th style="width: 100px">Time</th>
+                                       <th style="width: 80px"></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>
+                                          <input class="form-control" value="Amoxapine" type="text" />
+                                       </td>
+                                       <td>
+                                          <input class="form-control" type="text" value="2" />
+                                       </td>
+                                       <td>
+                                          <input class="form-control" value="2 Days" type="text" />
+                                       </td>
+                                       <td>
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Morning </label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Afternoon </label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Night </label>
+                                          </div>
+                                       </td>
+                                       <td>
+                                          <a href="#" class="btn bg-danger-light trash"><i class="far fa-trash-alt"></i></a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <input class="form-control" type="text" value="Benazepril" />
+                                       </td>
+                                       <td>
+                                          <input class="form-control" type="text" value="2" />
+                                       </td>
+                                       <td>
+                                          <input class="form-control" value="1 Days" type="text" />
+                                       </td>
+                                       <td>
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Morning </label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Afternoon </label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                             <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Night </label>
+                                          </div>
+                                       </td>
+                                       <td>
+                                          <a href="#" class="btn bg-danger-light trash"><i class="far fa-trash-alt"></i></a>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /Prescription Item -->
+
+                     <!-- Submit Section -->
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="submit-section">
+                              <a class="btn bg-success-light"> <i class="fas fa-save"></i> Save </a>
+                              <a class="btn bg-danger-light"> <i class="fas fa-times"></i> Clear </a>
+                           </div>
+                        </div>
+                        <!-- /Submit Section -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>
+         function showText() {
+            alert("The div has finished loading!");
+         }
+      </script>
+      <!-- /Page Content -->
+   </div>
+   {% endblock %}
+</div>

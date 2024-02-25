@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %}
+
+<div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-4">
+      <br />
+      <h2>Register</h2>
+      <label for="Username">Username</label>
+      <div class="form-group">{{ form.username }}</div>
+      <label for="email">Email</label>
+      <div class="form-group" style="background-color: white; border: 1px solid #999; padding: 5px">{{ form.email }}</div>
+      <label for="phone">Phone</label>
+      <div class="form-group" style="background-color: white; border: 1px solid #999; padding: 5px">{{ form.phone }}</div>
+      <label for="password">Password</label>
+      <div class="form-group">{{ form.password }}</div>
+      <div class="form-group">
+         Already have an account? Sign in <a href="{% url 'user_login' %}">here</a>.
+         <br />
+
+         <input type="submit" value="Register" class="btn btn-success py-3 px-5" />
+      </div>
+      <div class="row">
+         <b> {{breach_message}}</b>
+      </div>
+   </div>
+   <div class="col-md-5"><img src="https://static.gooddoctor.co.id/v1/tfs/T1x8xTB4JQ1RCvBVdK.svg" alt="" /></div>
+</div>
+
+{% endblock %}

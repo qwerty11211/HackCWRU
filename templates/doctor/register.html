@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %}
+<br><br><br><br>
+<h2>DR register</h2>
+
+<form method="post">
+   {% csrf_token %} {{ form.as_p }}
+
+   <button type="submit">Submit</button>
+</form>
+
+
+
+   <input type="submit" value="Register" class="btn btn-success py-3 px-5" />
+</div>
+{% endblock %}

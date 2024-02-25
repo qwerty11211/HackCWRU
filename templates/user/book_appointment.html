@@ -1,0 +1,253 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+   <div class="container-fluid">
+      <div class="row align-items-center">
+         <div class="col-md-12 col-12">
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Booking</li>
+               </ol>
+            </nav>
+            <h2 class="breadcrumb-title">Booking</h2>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- /Breadcrumb -->
+<div class="content">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <br />
+            <!-- Schedule Widget -->
+            <div class="card booking-schedule schedule-widget">
+               <!-- Schedule Header -->
+               <div class="schedule-header">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <!-- Day Slot -->
+                        <div class="day-slot">
+                           <ul>
+                              <li class="left-arrow">
+                                 <a href="#">
+                                    <i class="fa fa-chevron-left"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <span>Mon</span>
+                                 <span class="slot-date">11 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Tue</span>
+                                 <span class="slot-date">12 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Wed</span>
+                                 <span class="slot-date">13 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Thu</span>
+                                 <span class="slot-date">14 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Fri</span>
+                                 <span class="slot-date">15 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Sat</span>
+                                 <span class="slot-date">16 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li>
+                                 <span>Sun</span>
+                                 <span class="slot-date">17 Feb <small class="slot-year">2023</small></span>
+                              </li>
+                              <li class="right-arrow">
+                                 <a href="#">
+                                    <i class="fa fa-chevron-right"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                        <!-- /Day Slot -->
+                     </div>
+                  </div>
+               </div>
+               <!-- /Schedule Header -->
+
+               <!-- Schedule Content -->
+               <div class="schedule-cont">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <!-- Time Slot -->
+                        <div class="time-slot">
+                           <ul class="clearfix">
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing selected" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                              <li>
+                                 <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                 <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                              </li>
+                           </ul>
+                        </div>
+                        <!-- /Time Slot -->
+                     </div>
+                  </div>
+               </div>
+               <!-- /Schedule Content -->
+            </div>
+            <!-- /Schedule Widget -->
+         </div>
+      </div>
+      <br /><br />
+      <div class="row">
+         <div class="col-md-7 col-lg-8">
+            <div class="card">
+               <div class="card-body">
+                  <!-- Checkout Form -->
+                  <form>
+                     <div class="payment-widget">
+                        <h4 class="card-title">Payment Method</h4>
+
+                        <!-- Credit Card Payment -->
+                        <div class="payment-list">
+                           <label class="payment-radio credit-card-option">
+                              <input type="radio" name="radio" checked />
+                              <span class="checkmark"></span>
+                              Credit card
+                           </label>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group card-label">
+                                    <label for="card_name">Name on Card</label>
+                                    <input class="form-control" id="card_name" type="text" />
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group card-label">
+                                    <label for="card_number">Card Number</label>
+                                    <input class="form-control" id="card_number" placeholder="1234  5678  9876  5432" type="text" />
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group card-label">
+                                    <label for="expiry_month">Expiry Month</label>
+                                    <input class="form-control" id="expiry_month" placeholder="MM" type="text" />
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group card-label">
+                                    <label for="expiry_year">Expiry Year</label>
+                                    <input class="form-control" id="expiry_year" placeholder="YY" type="text" />
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group card-label">
+                                    <label for="cvv">CVV</label>
+                                    <input class="form-control" id="cvv" type="text" />
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /Credit Card Payment -->
+
+                        <!-- Submit Section -->
+                        <div class="submit-section mt-4">
+                           <a href="{% url 'book_success' doctor.id %}" class="btn btn-primary submit-btn">Confirm and Pay</a>
+                        </div>
+                        <!-- /Submit Section -->
+                     </div>
+                  </form>
+                  <!-- /Checkout Form -->
+               </div>
+            </div>
+         </div>
+
+         <div class="col-md-5 col-lg-4 theiaStickySidebar">
+            <!-- Booking Summary -->
+            <div class="card booking-card">
+               <div class="card-header">
+                  <h4 class="card-title">Booking Summary</h4>
+               </div>
+               <div class="card-body">
+                  <!-- Booking Doctor Info -->
+                  <div class="booking-doc-info">
+                     <a href="{% url 'doctor-details' doctor.id %}" class="booking-doc-img">
+                        <img src="{{ doctor.photo.url }}" alt="User Image" />
+                     </a>
+                     <div class="booking-info">
+                        <h4><a href="{% url 'doctor-details' doctor.id %}">{{ doctor.name }}</a></h4>
+                        <div class="rating">
+                           <i class="fas fa-star filled"></i>
+                           <i class="fas fa-star filled"></i>
+                           <i class="fas fa-star filled"></i>
+                           <i class="fas fa-star filled"></i>
+                           <i class="fas fa-star"></i>
+                           <span class="d-inline-block average-rating">{{ doctor.rating }}</span>
+                        </div>
+                        <div class="clinic-details">
+                           <p class="doc-location"><i class="fas fa-map-marker-alt"></i> {{ doctor.location }}</p>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Booking Doctor Info -->
+
+                  <div class="booking-summary">
+                     <div class="booking-item-wrap">
+                        <ul class="booking-date">
+                           <li>Date <span>16 Feb 2023</span></li>
+                           <li>Time <span>10:00 AM</span></li>
+                        </ul>
+                        <ul class="booking-fee">
+                           <li>Consulting Fee <span>₹100</span></li>
+                           <li>Booking Fee <span>₹10</span></li>
+                           <li>Video Call <span>₹50</span></li>
+                        </ul>
+                        <div class="booking-total">
+                           <ul class="booking-total-list">
+                              <li>
+                                 <span>Total</span>
+                                 <span class="total-cost">₹160</span>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- /Booking Summary -->
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

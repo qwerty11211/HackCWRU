@@ -1,0 +1,195 @@
+{% extends 'base.html' %} {% include 'base/header.html' %} {% load static %} {% block content %}
+
+<main>
+   <br>   <br> 
+
+
+   
+
+   <article class="container article">
+      <section class="home">
+         <div class="card profile-card">
+            <a href="{% url 'show_medical_card' %}">
+               <button class="card-menu-btn icon-box" aria-label="visibility" data-menu-btn>
+                  <span class="material-symbols-rounded icon">visibility</span>
+               </button>
+            </a>
+
+            <div class="profile-card-wrapper">
+               <figure class="card-avatar">
+                  <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Elizabeth Foster" width="78" height="98" />
+               </figure>
+
+               <div>
+                  <p class="card-title">{{username}}</p>
+
+                  <p class="card-subtitle">User #31219</p>
+               </div>
+            </div>
+
+            <ul class="contact-list">
+               <li>
+                  <a href="mailto:riyathomas@mail.com" class="contact-link icon-box">
+                     <span class="material-symbols-rounded icon">mail</span>
+
+                     <p class="text">elizabethtom@mail.com</p>
+                  </a>
+               </li>
+
+               <li>
+                  <a href="tel:00123456789" class="contact-link icon-box">
+                     <span class="material-symbols-rounded icon">call</span>
+
+                     <p class="text">91882177191</p>
+                  </a>
+               </li>
+            </ul>
+
+            <div class="divider card-divider"></div>
+<img src="https://cdnl.iconscout.com/lottie/premium/thumb/male-patient-medical-record-5685903-4745614.gif" alt=""> 
+         </div>
+
+      
+         <div class="card revenue-card">
+          
+      <section class="projects">
+         <div class="section-title-wrapper">
+            <h2 class="section-title">Ongoing medications</h2>
+
+            <button class="btn btn-link icon-box">
+               <span>View All</span>
+
+               <span class="material-symbols-rounded icon" aria-hidden="true">arrow_forward</span>
+            </button>
+         </div>
+    
+         <ul class="project-list">
+            {% for medication in medications %}
+            <li class="project-item">
+               <div class="card project-card">
+                  <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                     <span class="material-symbols-rounded icon">more_horiz</span>
+                  </button>
+
+                  <ul class="ctx-menu">
+                     <li class="ctx-item">
+                        <button class="ctx-menu-btn icon-box">
+                           <span class="material-symbols-rounded icon" aria-hidden="true">visibility</span>
+
+                           <span class="ctx-menu-text">View</span>
+                        </button>
+                     </li>
+
+                     <li class="ctx-item">
+                        <button class="ctx-menu-btn icon-box">
+                           <span class="material-symbols-rounded icon" aria-hidden="true">edit</span>
+
+                           <span class="ctx-menu-text">Edit</span>
+                        </button>
+                     </li>
+
+                     <li class="divider"></li>
+
+                     <li class="ctx-item">
+                        <button class="ctx-menu-btn red icon-box">
+                           <span class="material-symbols-rounded icon" aria-hidden="true">delete</span>
+
+                           <span class="ctx-menu-text">Delete</span>
+                        </button>
+                     </li>
+                  </ul>
+
+     
+
+                  <h3 class="card-title">
+                     <a href="#">{{medication.medicinename}}  <br> </a>
+                  </h3>
+
+                  <div class="card-badge blue">{{medication.quantity}} doses</div>
+
+                  <p class="card-text">Take the medicine at </span> {{medication.time}} pm and continue for </span> {{medication.days}} days</p>
+<p class="card-text">Suggested by Dr {{medication.doctorname}}</p>
+                  <div class="card-progress-box">
+                     <div class="progress-label">
+                        <span class="progress-title">Progress</span>
+
+                        <data class="progress-data" value="75">75%</data>
+                     </div>
+
+                     <div class="progress-bar">
+                        <div class="progress" style="--width: 75%; --bg: var(--emerald)"></div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+
+  
+            {% endfor %}
+         </ul>
+      </section>
+         </div>
+      </section>
+
+      <!-- 
+        - #PROJECTS
+      -->
+
+
+      <!-- 
+        - #TASKS
+      -->
+
+      <section class="tasks">
+         <div class="section-title-wrapper">
+            <h2 class="section-title">Upcoming appointments</h2>
+
+            <button class="btn btn-link icon-box">
+               <span>View All</span>
+
+               <span class="material-symbols-rounded icon" aria-hidden="true">arrow_forward</span>
+            </button>
+         </div>
+
+      
+         <ul class="tasks-list">
+            {% for appointment in appointments %}
+            <li class="tasks-item">
+               <div class="card task-card">
+                  <div class="card-input">
+                     <input type="checkbox" name="task-1" id="task-1" />
+
+                     <label for="task-1" class="task-label"> <a href="">Dr {{appointment.doctorname}}  </a> </label>
+                  </div>
+
+                  <div class="card-badge cyan radius-pill"><span class="d-block text-info"></span> {{appointment.datetime}}</div>
+                 
+                  <ul class="card-meta-list">
+                     <li>
+                        <div class="meta-box icon-box">
+                           <span class="material-symbols-rounded icon">list</span>
+
+                           <span>{{appointment.type}}</span>
+                        </div>
+                     </li>
+
+
+                     <li>
+                        <div class="card-badge red">{{appointment.amount}}</div>
+                     </li>
+                  </ul>
+               </div>
+            </li>
+            {% endfor %}
+ 
+         </ul>
+
+         <button class="btn btn-primary" data-load-more>
+            <span class="spiner"></span>
+
+            <span>Load More</span>
+         </button>
+      </section>
+ 
+   </article>
+</main>
+{% endblock %}
