@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Doctor
 from .forms import DoctorForm
-from user.models import  Appointments
+from user.models import Appointments
 import os
 import openai
 import datetime
@@ -27,81 +27,81 @@ def valid_username(credential):
 
 
 def login_page(request):
-    
-    if request.method == 'POST':
-      
+
+    if request.method == "POST":
+
         form = DoctorForm(request.POST)
         if form.is_valid():
             if user_exist(form):
-            
-                return redirect('/doctor/1')
+
+                return redirect("/doctor/1")
     else:
         form = DoctorForm()
-   
-    context = {
-        'form': form
-    }
-    return render(request, 'doctor/login.html', context)
+
+    context = {"form": form}
+    return render(request, "doctor/login.html", context)
 
 
 def register_page(request):
-    
-    if request.method == 'POST':
+
+    if request.method == "POST":
         form = DoctorForm(request.POST)
         if form.is_valid() and valid_username(form):
             form.save()
-            return redirect('/doctor/login')
+            return redirect("/doctor/login")
     else:
         form = DoctorForm()
-      
-    context = {
-        'form': form
-    }
-    return render(request, 'doctor/register.html', context)
+
+    context = {"form": form}
+    return render(request, "doctor/register.html", context)
 
 
 def dashboard(request):
-    doctor_id=request.user.id
-    
-    doctor_details = Doctor.objects.get(id=doctor_id)
-    appointments = Appointments.objects.filter(doctorid=doctor_id).order_by('datetime')
-    context = {
-        'appointments': appointments,
-        'doctor': doctor_details,
-        'todays_date': datetime.datetime.now().date().strftime('%d-%m-%Y'),
+    doctor_id = request.user.id
 
+    doctor_details = Doctor.objects.get(id=doctor_id)
+    appointments = Appointments.objects.filter(doctorid=doctor_id).order_by("datetime")
+    context = {
+        "appointments": appointments,
+        "doctor": doctor_details,
+        "todays_date": datetime.datetime.now().date().strftime("%d-%m-%Y"),
     }
-    return render(request, 'doctor/dashboard.html', context)
+    return render(request, "doctor/dashboard.html", context)
 
 
 def doctor_details(request, doctor_id):
     doctor_details = Doctor.objects.get(id=doctor_id)
     context = {
-        'doctor': doctor_details,
+        "doctor": doctor_details,
     }
 
-    return render(request, 'user/doctor-details.html', context)
+    return render(request, "user/doctor-details.html", context)
 
 
 def book_appointment(request, doctor_id):
     doctor_details = Doctor.objects.get(id=doctor_id)
-    return render(request, 'user/book_appointment.html', {
-        'doctor': doctor_details,
-    })
+    return render(
+        request,
+        "user/book_appointment.html",
+        {
+            "doctor": doctor_details,
+        },
+    )
 
 
 def checkout(request, doctor_id):
     doctor_details = Doctor.objects.get(id=doctor_id)
-    return render(request, 'user/checkout.html', {
-        'doctor': doctor_details,
-    })
-
-
-
+    return render(
+        request,
+        "user/checkout.html",
+        {
+            "doctor": doctor_details,
+        },
+    )
 
 
 def make_openapi_call(prompt):
-    openai.api_key=os.getenv("OPENAI_KEY")
+    openai.api_key = os.getenv("OPENAI_KEY")
     # openai_response = vault.get(
     #     id=os.getenv("OPENAI_VAULT_ID"),
     #     version=1,
@@ -109,14 +109,11 @@ def make_openapi_call(prompt):
     # )
     # openai.api_key=openai_response.result.current_version.secret
     response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=2048
+        engine="text-davinci-002", prompt=prompt, max_tokens=2048
     )
-    result=response["choices"][0]["text"]
+    result = response["choices"][0]["text"]
     print(result)
     return result
-
 
 
 def add_prescription(request, doctor_id):
@@ -128,15 +125,22 @@ def add_prescription(request, doctor_id):
         print("listening")
         audio = r.listen(source)
     text = r.recognize_google(audio)
-    redacted_text=response.result.redacted_text
+    redacted_text = response.result.redacted_text
 
-    diseases=make_openapi_call(f"List as points without explanation the top 2 names of disease that is likely given the following   : {', '.join(redacted_text)}")
-    medicine=''
+    diseases = make_openapi_call(
+        f"List as points without explanation the top 2 names of disease that is likely given the following   : {', '.join(redacted_text)}"
+    )
+    medicine = ""
 
     for disease in diseases.split("\n"):
-        medicine+=make_openapi_call(f"What are the  medication for {disease}")
+        medicine += make_openapi_call(f"What are the  medication for {disease}")
 
-    text=f"Disease: {diseases} \n\n\n Prescription {medicine}"
-    return render(request, 'doctor/prescription.html', {
-        'doctor': doctor_details, 'text':text,
-    })
+    text = f"Disease: {diseases} \n\n\n Prescription {medicine}"
+    return render(
+        request,
+        "doctor/prescription.html",
+        {
+            "doctor": doctor_details,
+            "text": text,
+        },
+    )

@@ -11,8 +11,4 @@ urlpatterns = [
     path('show/', show_medical_details, name='show_medical_details'),
     path('card/', show_medical_card, name='show_medical_card'),
 
-
-
-
-
 ]
